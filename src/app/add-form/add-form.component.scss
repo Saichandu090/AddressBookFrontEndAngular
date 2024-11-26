@@ -1,0 +1,36 @@
+.button-container{
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    max-width: 700px;
+}
+
+.form-container{
+    display: flex;
+    justify-content: center;
+    margin: 100px;
+    max-width: 700px;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    max-width: 700px;
+}
+
+.text{
+    margin: 40px;
+    text-align: center;
+    background-color: blue;
+    color: azure;
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 900px;
+}
+
+.form-group{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}

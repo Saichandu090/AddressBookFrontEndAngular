@@ -20,4 +20,12 @@ export class AddressServiceService {
     return this.http.post(this.baseurl+'addBook', addressBook);
   }
 
+  deleteBook(id:number):Observable<String> {
+    return this.http.delete<String>(this.baseurl+`deleteBook/${id}`);
+  }
+
+  updateBook(id:number,addressBook:Address) {
+    return this.http.put(this.baseurl+`updateBook/${id}`,addressBook);
+  }
+
 }

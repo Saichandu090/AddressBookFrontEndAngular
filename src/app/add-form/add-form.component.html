@@ -63,6 +63,7 @@
             />
           </label>
         </div>
+        
 
         <div class="form-group">
           <label for="state">
@@ -102,11 +103,9 @@
         >
           Add
         </button>
-        <button class="btn btn-primary" (click)="reset(addressForm)">
-          Reset
-        </button>
+          <button class="btn btn-primary" (click)="onReset()">Reset</button>
 
-          <a routerLink="/homepage">
+        <a routerLink="/homepage">
           <button class="btn btn-danger">Cancel</button>
         </a>
       </div>

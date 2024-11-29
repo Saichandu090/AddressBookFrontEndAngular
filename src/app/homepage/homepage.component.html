@@ -1,26 +1,33 @@
 <div class="row">
-    <div class="col-12 pt-2">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>FullName</th>
-                    <th>Address</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>Zip-Code</th>
-                    <th>PhoneNumber</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let book of books">
-                    <td>{{book.fullName}}</td>
-                    <td>{{book.address}}</td>
-                    <td>{{book.city}}</td>
-                    <td>{{book.state}}</td>
-                    <td>{{book.zipCode}}</td>
-                    <td>{{book.phoneNumber}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+  <div class="col-12 pt-2">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>FullName</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Zip-Code</th>
+          <th>PhoneNumber</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <td>{{ book.fullName }}</td>
+          <td>{{ book.address }}</td>
+          <td>{{ book.city }}</td>
+          <td>{{ book.state }}</td>
+          <td>{{ book.zipCode }}</td>
+          <td>{{ book.phoneNumber }}</td>
+          <td>
+            <a routerLink="/add-form">
+              <button class="btn btn-primary" (click)="onUpdate(book.id,book)">Update</button>
+            </a>
+              <button class="btn btn-danger" (click)="onDelete(book.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

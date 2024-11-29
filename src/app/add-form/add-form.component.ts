@@ -3,7 +3,6 @@ import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { AddressServiceService } from '../services/address-service.service';
 import { Address } from '../model/address';
-import { json } from 'stream/consumers';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -36,7 +35,7 @@ export class AddFormComponent {
     addressForm.reset();
   }
 
-  reset(addressForm:NgForm) {
-    addressForm.reset();
+  onReset(){
+    this.address=this.address;
   }
 }

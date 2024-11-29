@@ -21,10 +21,18 @@
           <td>{{ book.zipCode }}</td>
           <td>{{ book.phoneNumber }}</td>
           <td>
-            <a routerLink="/add-form">
-              <button class="btn btn-primary" (click)="onUpdate(book.id,book)">Update</button>
-            </a>
-              <button class="btn btn-danger" (click)="onDelete(book.id)">Delete</button>
+            <div class="d-flex gap-3">
+              <a routerLink="/add-form">
+                <i class="material-icons" (click)="onUpdate(book.id, book)"
+                  >edit</i
+                >
+                <!-- <button class="btn btn-primary" (click)="onUpdate(book.id,book)">Update</button> -->
+              </a>
+              <!-- <button class="btn btn-danger" (click)="onDelete(book.id)">Delete</button> -->
+              <a routerLink="" class="anchor">
+                <i class="material-icons" (click)="onDelete(book.id)">delete</i>
+              </a>
+            </div>
           </td>
         </tr>
       </tbody>

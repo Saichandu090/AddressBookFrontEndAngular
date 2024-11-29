@@ -1,8 +1,26 @@
-<h1>HomePage</h1>
-<div>
-    <a [routerLink]="'/add-form'">
-        <button>Add-Book</button>
-    </a>
-
-
+<div class="row">
+    <div class="col-12 pt-2">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>FullName</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip-Code</th>
+                    <th>PhoneNumber</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let book of books">
+                    <td>{{book.fullName}}</td>
+                    <td>{{book.address}}</td>
+                    <td>{{book.city}}</td>
+                    <td>{{book.state}}</td>
+                    <td>{{book.zipCode}}</td>
+                    <td>{{book.phoneNumber}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

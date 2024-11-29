@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { AddressServiceService } from '../address-service.service';
+import { AddressServiceService } from '../services/address-service.service';
 import { Observable } from 'rxjs';
-import { Address } from '../model/address';
+import { Address, ResponseAddress } from '../model/address';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,12 +13,21 @@ import { CommonModule } from '@angular/common';
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss'
 })
-export class HomepageComponent {
+export class HomepageComponent implements OnInit{
 
-  constructor(private addressService: AddressServiceService) { }
+  addressService:AddressServiceService=inject(AddressServiceService);
 
-  getBooks():Observable<Address[]>{
-    console.log(this.addressService.getBooks());
-    return this.addressService.getBooks();
+  ngOnInit(): void {
+    this.getBooks();
   }
+
+  books:ResponseAddress[]=[];
+
+  getBooks(){
+    this.addressService.getBooks().subscribe((obj:ResponseAddress[])=>{
+      console.log(obj)
+      this.books=obj;
+    }); 
+  }
+  
 }

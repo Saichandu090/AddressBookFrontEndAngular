@@ -1,108 +1,115 @@
-<h3 class="text">PERSON ADDRESS FORM</h3>
+<div class="form">
+  <div *ngIf="successMessage !== ''" class="alert alert-success">
+    {{ successMessage }}
+  </div>
 
-<div *ngIf="successMessage !== ''" class="alert alert-success">
-  {{ successMessage }}
-</div>
-
-<div class="form-container">
-  <form #addressForm="ngForm" (ngSubmit)="addForm(addressForm)">
-    <!--Name-->
-    <div class="form-group">
-      <label for="fullName">
-        FullName
-        <input
-          required
-          type="text"
-          name="fullName"
-          [(ngModel)]="address.fullName"
-          class="form-control"
-        />
-      </label>
-    </div>
-
-    <!--Phone Number-->
-    <div class="form-group">
-      <label for="phoneNumber">
-        Phone Number
-        <input
-          required
-          pattern="(^[0-9]{10}$)"
-          type="tel"
-          name="phoneNumber"
-          [(ngModel)]="address.phoneNumber"
-          class="form-control"
-        />
-      </label>
-    </div>
-
-    <!--Address-->
-    <div class="form-group">
-      <label for="address">
-        Address
-        <input
-          required
-          type="text"
-          name="address"
-          [(ngModel)]="address.address"
-          class="form-control"
-        />
-      </label>
-    </div>
-
-    <!-- City,state and zip code-->
-    <div class="container">
+  <div class="form-container">
+    <form #addressForm="ngForm" (ngSubmit)="addForm(addressForm)">
+      <h3 class="text">PERSON ADDRESS FORM</h3>
+      <!--Name-->
       <div class="form-group">
-        <label for="city">
-          City
+        <label for="fullName">
+          FullName
           <input
             required
             type="text"
-            name="city"
-            [(ngModel)]="address.city"
+            name="fullName"
+            [(ngModel)]="address.fullName"
             class="form-control"
           />
         </label>
       </div>
 
+      <!--Phone Number-->
       <div class="form-group">
-        <label for="state">
-          State
+        <label for="phoneNumber">
+          Phone Number
           <input
             required
-            type="text"
-            name="city"
-            [(ngModel)]="address.state"
-            class="form-control"
-          />
-        </label>
-      </div>
-
-      <div class="form-group">
-        <label for="zipcode">
-          Zip-Code
-          <input
-            required
-            maxlength="6"
-            pattern="(^[0-9]{6}$)"
+            pattern="(^[0-9]{10}$)"
             type="tel"
-            name="zipcode"
-            [(ngModel)]="address.zipCode"
+            name="phoneNumber"
+            [(ngModel)]="address.phoneNumber"
             class="form-control"
           />
         </label>
       </div>
-    </div>
 
-    <!--Buttons-->
-    <div class="button-container">
-      <button
-        [disabled]="addressForm.invalid"
-        class="btn btn-primary"
-        type="submit"
-      >
-        Add
-      </button>
-      <button class="btn btn-primary" (click)="reset(addressForm)">Reset</button>
-    </div>
-  </form>
+      <!--Address-->
+      <div class="form-group">
+        <label for="address">
+          Address
+          <input
+            required
+            type="text"
+            name="address"
+            [(ngModel)]="address.address"
+            class="form-control"
+          />
+        </label>
+      </div>
+
+      <!-- City,state and zip code-->
+      <div class="container">
+        <div class="form-group">
+          <label for="city">
+            City
+            <input
+              required
+              type="text"
+              name="city"
+              [(ngModel)]="address.city"
+              class="form-control"
+            />
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="state">
+            State
+            <input
+              required
+              type="text"
+              name="city"
+              [(ngModel)]="address.state"
+              class="form-control"
+            />
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="zipcode">
+            Zip-Code
+            <input
+              required
+              maxlength="6"
+              pattern="(^[0-9]{6}$)"
+              type="tel"
+              name="zipcode"
+              [(ngModel)]="address.zipCode"
+              class="form-control"
+            />
+          </label>
+        </div>
+      </div>
+
+      <!--Buttons-->
+      <div class="button-container">
+        <button
+          [disabled]="addressForm.invalid"
+          class="btn btn-primary"
+          type="submit"
+        >
+          Add
+        </button>
+        <button class="btn btn-primary" (click)="reset(addressForm)">
+          Reset
+        </button>
+
+          <a routerLink="/homepage">
+          <button class="btn btn-danger">Cancel</button>
+        </a>
+      </div>
+    </form>
+  </div>
 </div>

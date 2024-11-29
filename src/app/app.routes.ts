@@ -5,7 +5,7 @@ import { NgModel } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-  
+
 export const routes: Routes = [
     { path: 'homepage', component: HomepageComponent },
     { path: '', redirectTo: 'homepage', pathMatch: 'full' },
@@ -15,6 +15,6 @@ export const routes: Routes = [
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
-    
+
 })
 export class AppRoutingModule { }

@@ -32,8 +32,8 @@
               }
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/bootstrap/scss/bootstrap.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.scss"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
@@ -69,10 +69,8 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "proxyConfig":"src/proxy.config.json"
-          },
+          "builder": "@angular-devkit/build-angular:dev-server"
+          ,
           "configurations": {
             "production": {
               "buildTarget": "addressform:build:production"

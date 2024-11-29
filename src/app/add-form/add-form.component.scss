@@ -20,17 +20,20 @@
 }
 
 .text{
-    margin: 40px;
+    color: white;
     text-align: center;
-    background-color: blue;
-    color: azure;
-    padding: 40px;
-    border-radius: 20px;
-    max-width: 900px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: black;
 }
 
 .form-group{
     display: flex;
     justify-content: center;
     flex-direction: row;
+}
+
+.form{
+    display: flex;
+    justify-content: center;
 }

@@ -1,20 +1,22 @@
 import { CommonModule, NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { AddressServiceService } from '../address-service.service';
+import { AddressServiceService } from '../services/address-service.service';
 import { Address } from '../model/address';
 import { json } from 'stream/consumers';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-add-form',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule,RouterLink],
   templateUrl: './add-form.component.html',
   styleUrl: './add-form.component.scss'
 })
 export class AddFormComponent {
 
-  constructor(private addressService: AddressServiceService) { }
+
+  private addressService: AddressServiceService=inject(AddressServiceService);
 
   successMessage: string = '';
 

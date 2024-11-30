@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, SkipSelf, ɵɵqueryRefresh } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AddressServiceService } from '../services/address-service.service';
 import { Address, ResponseAddress } from '../model/address';
 import { CommonModule } from '@angular/common';
@@ -23,6 +23,8 @@ export class HomepageComponent implements OnInit {
 
   books: ResponseAddress[] = [];
 
+  private router:Router=inject(Router);
+
   //-------------------------------------------------//
 
   getBooks() {
@@ -38,12 +40,9 @@ export class HomepageComponent implements OnInit {
     const confDelete = confirm("Are you sure that you want to delete");
     if (confDelete) {
       this.addressService.deleteBook(id).subscribe((res: String) => {
-        if (res !== null) {
-          alert(res);
-          console.log(res);
-        }
+        alert(res)
       });
-      this.getBooks();
+      this.router.navigateByUrl('/homepage');
     }
   };
 

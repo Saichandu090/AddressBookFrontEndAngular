@@ -10,22 +10,22 @@ export class AddressServiceService {
 
   private baseurl: String = "http://localhost:8080/addressBook/";
 
-  http:HttpClient=inject(HttpClient);
+  http: HttpClient = inject(HttpClient);
 
   getBooks(): Observable<ResponseAddress[]> {
-    return this.http.get<ResponseAddress[]>(this.baseurl+"allBooks");
+    return this.http.get<ResponseAddress[]>(this.baseurl + "allBooks");
   }
 
-  addBook(addressBook: Address) {
-    return this.http.post(this.baseurl+'addBook', addressBook);
+  addBook(addressBook: Address): Observable<ResponseAddress> {
+    return this.http.post<ResponseAddress>(this.baseurl + 'addBook', addressBook);
   }
 
-  deleteBook(id:number):Observable<String> {
-    return this.http.delete<String>(this.baseurl+`deleteBook/${id}`);
+  deleteBook(id: number): Observable<String> {
+    return this.http.delete<String>(this.baseurl + `deleteBook/${id}`);
   }
 
-  updateBook(id:number,addressBook:Address) {
-    return this.http.put(this.baseurl+`updateBook/${id}`,addressBook);
+  updateBook(id: number, addressBook: Address): Observable<ResponseAddress> {
+    return this.http.put<ResponseAddress>(this.baseurl + `updateBook/${id}`, addressBook);
   }
 
 }

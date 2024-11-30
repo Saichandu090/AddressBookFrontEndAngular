@@ -1,10 +1,16 @@
-export interface IUser{
-    username:string;
+export interface ILoginUser{
+    userName:string;
     password:string;
 }
 
 export interface LoginResponse {
     result: boolean;
-    message?: string;
-    data?: { token: string };
-  }
+    message: string;
+}
+
+
+export interface IRegisterUser{
+    userName:string,
+    email:string,
+    password:string
+}

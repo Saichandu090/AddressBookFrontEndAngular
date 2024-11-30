@@ -2,12 +2,34 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
 import { AddFormComponent } from './add-form/add-form.component';
 import { NgModule } from '@angular/core';
+import { LoginComponent } from './login/login.component';
+import { LayoutComponent } from './layout/layout.component';
 
 
 export const routes: Routes = [
-    { path: 'homepage', component: HomepageComponent },
-    { path: '', redirectTo: 'homepage', pathMatch: 'full' },
-    { path: 'add-form', component: AddFormComponent },
+    {
+        path:'',
+        redirectTo:'login',
+        pathMatch:'full'
+    },
+    {
+        path:'login',
+        component:LoginComponent
+    },
+    {
+        path:'',
+        component:LayoutComponent,
+        children:[
+            {
+                path:'homepage',
+                component:HomepageComponent
+            },
+            {
+                path:'add-form',
+                component:AddFormComponent
+            }
+        ]
+    }
 ];
 
 @NgModule({

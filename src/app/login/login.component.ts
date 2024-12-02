@@ -13,32 +13,30 @@ import { LoginService } from '../services/login.service';
 })
 export class LoginComponent {
 
-  private loginService=inject(LoginService);
+  private loginService = inject(LoginService);
 
-  loginObj: ILoginUser={
-    userName:'',
-    password:''
+  loginObj: ILoginUser = {
+    userName: '',
+    password: ''
   }
 
-  registerObj:IRegisterUser={
-    userName:'',
-    email:'',
-    password:''
+  registerObj: IRegisterUser = {
+    userName: '',
+    email: '',
+    password: ''
   }
 
-  router=inject(Router);
+  router = inject(Router);
 
   // ---------------------------------------------------//
 
   onLogin() {
-    debugger;
-    this.loginService.login(this.loginObj).subscribe((res:LoginResponse)=>{
-      let req:boolean;
-      if(res.result){
-        localStorage.setItem('angularToken',res.message);
+    this.loginService.login(this.loginObj).subscribe((res: LoginResponse) => {
+      if (res.result) {
+        localStorage.setItem('angularToken', res.message);
         alert('Login Success')
         this.router.navigateByUrl('/homepage')
-      }else{
+      } else {
         alert(res.message)
       }
     });
@@ -46,12 +44,12 @@ export class LoginComponent {
 
   // ---------------------------------------------------//
 
-  onRegister(){
-    this.loginService.register(this.registerObj).subscribe((res:LoginResponse)=>{
-      if(res.result){
+  onRegister() {
+    this.loginService.register(this.registerObj).subscribe((res: LoginResponse) => {
+      if (res.result) {
         alert(res.message)
         console.log('User Registered Successfully')
-      }else{
+      } else {
         alert(res.message)
       }
     });

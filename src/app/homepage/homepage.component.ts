@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AddressServiceService } from '../services/address-service.service';
 import { Address, ResponseAddress } from '../model/address';
 import { CommonModule } from '@angular/common';
+import { LoginResponse } from '../model/UserDetails';
 
 
 @Component({
@@ -38,11 +39,12 @@ export class HomepageComponent implements OnInit {
 
   onDelete(id: number) {
     const confDelete = confirm("Are you sure that you want to delete");
+    
     if (confDelete) {
-      this.addressService.deleteBook(id).subscribe((res: String) => {
-        alert(res)
+      this.addressService.deleteBook(id).subscribe((res:LoginResponse) => {
+        alert(res.message)
+        this.router.navigateByUrl('/homepage');
       });
-      this.router.navigateByUrl('/homepage');
     }
   };
 

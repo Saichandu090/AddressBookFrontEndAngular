@@ -14,3 +14,8 @@ export interface IRegisterUser{
     email:string,
     password:string
 }
+
+export interface IToken{
+    result:boolean,
+    token:string
+}

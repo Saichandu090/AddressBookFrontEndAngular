@@ -31,13 +31,15 @@ export class LoginComponent {
   // ---------------------------------------------------//
 
   onLogin() {
+    debugger;
     this.loginService.login(this.loginObj).subscribe((res:LoginResponse)=>{
+      let req:boolean;
       if(res.result){
-        alert(res.message)
+        localStorage.setItem('angularToken',res.message);
+        alert('Login Success')
         this.router.navigateByUrl('/homepage')
       }else{
         alert(res.message)
-        this.router.navigateByUrl('')
       }
     });
   }

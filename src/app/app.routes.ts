@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { loginGuard } from './guard/login.guard';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -19,6 +20,10 @@ export const routes: Routes = [
         component:LoginComponent
     },
     {
+        path:'register',
+        component:RegisterComponent
+    },
+    {
         path:'',
         component:LayoutComponent,
         children:[
@@ -29,6 +34,11 @@ export const routes: Routes = [
             },
             {
                 path:'add-form',
+                component:AddFormComponent,
+                canActivate:[loginGuard]
+            },
+            {
+                path:'add-form/:fullName',
                 component:AddFormComponent,
                 canActivate:[loginGuard]
             }

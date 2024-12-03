@@ -1,18 +1,18 @@
 <section>
-    <div class="container">
-      <div class="title">
-          <h3><a routerLink="/homepage">ADDRESS BOOK</a></h3>
-        </div>
-      <nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <div class="title">
+        <h3><a class="my" routerLink="/homepage">ADDRESS BOOK</a></h3>
+      </div>
+    <nav class="navbar navbar-expand-lg">
         <div class="float-right">
-          <a routerLink="/add-form" class="mr-2">
-          <button class="btn btn-success btn-lg float-right mr-3">ADD-Book</button>
+          <a routerLink="/add-form">
+          <button class="btn btn-success btn-lg">ADD-Book</button>
           </a>
         </div>
-         <a >
-          <button class="btn btn-danger btn-lg float-left" (click)="onLogout()">LogOut</button>
+         <a>
+          <button class="btn btn-danger btn-lg" (click)="onLogout()">LogOut</button>
           </a>
-      </nav>
-    </div>
-  </section>
-  <router-outlet></router-outlet>
+    </nav>
+  </div>
+</section>
+<router-outlet></router-outlet>

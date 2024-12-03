@@ -42,17 +42,15 @@ export class HomepageComponent implements OnInit {
     
     if (confDelete) {
       this.addressService.deleteBook(id).subscribe((res:LoginResponse) => {
-        alert(res.message)
-        this.router.navigateByUrl('/homepage');
+        alert(res.message);
+        this.getBooks();
       });
     }
   };
 
   //-------------------------------------------------//
 
-  onUpdate(id: number, addressBook: Address) {
-    
-  };
+
 
   //-------------------------------------------------//
 

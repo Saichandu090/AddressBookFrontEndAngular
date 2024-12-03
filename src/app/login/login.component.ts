@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router,RouterLink } from '@angular/router';
 import { ILoginUser, IRegisterUser, LoginResponse } from '../model/UserDetails';
 import { LoginService } from '../services/login.service';
 
@@ -20,19 +20,15 @@ export class LoginComponent {
     password: ''
   }
 
-  registerObj: IRegisterUser = {
-    userName: '',
-    email: '',
-    password: ''
-  }
-
   router = inject(Router);
 
   // ---------------------------------------------------//
 
   onLogin() {
     this.loginService.login(this.loginObj).subscribe((res: LoginResponse) => {
-      if (res.result) {
+      if(res===null)
+        alert('Wrong user Credentials');
+      else if (res.result) {
         localStorage.setItem('angularToken', res.message);
         alert('Login Success')
         this.router.navigateByUrl('/homepage')
@@ -42,19 +38,9 @@ export class LoginComponent {
     });
   }
 
-  // ---------------------------------------------------//
-
-  onRegister() {
-    this.loginService.register(this.registerObj).subscribe((res: LoginResponse) => {
-      if (res.result) {
-        alert(res.message)
-        console.log('User Registered Successfully')
-      } else {
-        alert(res.message)
-      }
-    });
+  getRegister(){
+    this.router.navigateByUrl('/register');
   }
 
   // ---------------------------------------------------//
-
 }

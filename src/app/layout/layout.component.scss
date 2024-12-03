@@ -4,11 +4,22 @@
 }
 
 .title{
-    color: blue;
-    padding: 20px;
+    padding: 30px;
     display: inline-flex;
+    align-items: center;
 }
 
 a{
     text-decoration: none;
+}
+
+.float-right{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin: auto;
+}
+
+.my{
+    color: blue;
 }

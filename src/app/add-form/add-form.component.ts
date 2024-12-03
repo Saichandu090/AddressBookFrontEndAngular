@@ -3,7 +3,8 @@ import { Component, Inject, inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AddressServiceService } from '../services/address-service.service';
 import { Address, ResponseAddress } from '../model/address';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-add-form',
@@ -13,6 +14,8 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './add-form.component.scss'
 })
 export class AddFormComponent {
+
+  activeRoute=inject(ActivatedRoute);
 
 
   private addressService: AddressServiceService = inject(AddressServiceService);
@@ -28,7 +31,7 @@ export class AddFormComponent {
 
   addressForm: FormGroup = new FormGroup({
     fullName: new FormControl('', [Validators.required]),
-    phoneNumber: new FormControl('', [Validators.required]),
+    phoneNumber: new FormControl('', [Validators.required,Validators.minLength(10)]),
     address: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
     state: new FormControl('', [Validators.required]),
@@ -49,6 +52,28 @@ export class AddFormComponent {
   }
 
  onReset() {
-
+  this.addressForm.reset();
   }
+
+  // fullName$ = this.activeRoute.paramMap.pipe(
+  //   map(params=>
+  //     params.get('book.fullName'))
+  // );
+
+  //editBook!:Address;
+
+  editBook(book:Address){
+    this.addressForm.patchValue({
+      
+    });
+  }
+
+  getAddressBook(fullName:string){
+    
+    this.addressService.getBook(fullName).subscribe((res:Address)=>{
+      this.editBook(res),
+      (err:any)=>console.log(err);
+    })
+  }
+
 }

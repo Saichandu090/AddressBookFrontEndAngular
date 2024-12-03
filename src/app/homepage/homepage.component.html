@@ -14,22 +14,22 @@
       </thead>
       <tbody>
         <tr *ngFor="let book of books">
-          <td>{{ book.fullName }}</td>
+          <td>{{ book.fullName | titlecase}}</td>
           <td>{{ book.address }}</td>
-          <td>{{ book.city }}</td>
-          <td>{{ book.state }}</td>
+          <td>{{ book.city | uppercase}}</td>
+          <td>{{ book.state | uppercase}}</td>
           <td>{{ book.zipCode }}</td>
           <td>{{ book.phoneNumber }}</td>
           <td>
             <div class="d-flex gap-3">
-              <a routerLink="/add-form">
-                <i class="material-icons" (click)="onUpdate(book.id, book)"
+              <a [routerLink]="['/add-form',book.fullName]">
+                <i class="material-icons"
                   >edit</i
                 >
                 <!-- <button class="btn btn-primary" (click)="onUpdate(book.id,book)">Update</button> -->
               </a>
               <!-- <button class="btn btn-danger" (click)="onDelete(book.id)">Delete</button> -->
-              <a routerLink="" class="anchor">
+              <a routerLink="--" class="anchor">
                 <i class="material-icons" (click)="onDelete(book.id)">delete</i>
               </a>
             </div>

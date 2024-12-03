@@ -1,0 +1,38 @@
+<div class="parent">
+    <div class="container">
+        <div class="card register">
+          <h2>Register</h2>
+          <form #myForm="ngForm">
+            <input type="text" [(ngModel)]="registerObj.userName" name="userName" placeholder="Username" required>
+            @if(myForm.controls['userName'].dirty){
+                <div class="text-danger">
+                    @if (myForm.controls['userName'].errors?.['required']) {
+                        <span>This is Required</span>
+                    }
+                </div>
+            }
+            <input type="email" [(ngModel)]="registerObj.email" name="email" placeholder="Email" required email>
+            @if(myForm.controls['email'].dirty){
+                <div class="text-danger">
+                    @if (myForm.controls['email'].errors?.['required']) {
+                        <span>This is Required</span>
+                    }
+                    @if (myForm.controls['email'].errors?.['email']) {
+                        <span>This should be In Email Format</span>
+                    }
+                </div>
+            }
+            <input type="password" [(ngModel)]="registerObj.password" name="password" placeholder="Password" required>
+            @if(myForm.controls['password'].dirty){
+                <div class="text-danger">
+                    @if (myForm.controls['password'].errors?.['required']) {
+                        <span>This is Required</span>
+                    }
+                </div>
+            }
+            <button type="submit" [disabled]="myForm.invalid" (click)="onRegister()">Register</button>
+          </form>
+        </div>
+      </div>
+</div>
+

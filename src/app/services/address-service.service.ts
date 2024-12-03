@@ -16,6 +16,19 @@ export class AddressServiceService {
 
   //headers: HttpHeaders = inject(HttpHeaders);
 
+  getBook(name:string):Observable<ResponseAddress>{
+    let token = localStorage.getItem('angularToken');
+    //console.log(token);
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+    //console.log(headers)
+    return this.http.get<ResponseAddress>(this.baseurl + `byfullName/${name}`, { headers });
+  }
+
+  //================================================//
+
   getBooks(): Observable<ResponseAddress[]> {
     let token = localStorage.getItem('angularToken');
     //console.log(token);
@@ -27,13 +40,15 @@ export class AddressServiceService {
     return this.http.get<ResponseAddress[]>(this.baseurl + "allBooks", { headers });
   }
 
+  //================================================//
+
   // getBooks(): Observable<ResponseAddress[]> {
   //   return this.http.get<ResponseAddress[]>();
   // }
 
   addBook(addressBook: Address): Observable<ResponseAddress> {
     let token = localStorage.getItem('angularToken');
-    console.log(token);
+    //console.log(token);
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -41,9 +56,11 @@ export class AddressServiceService {
     return this.http.post<ResponseAddress>(this.baseurl + 'addBook', addressBook, { headers });
   }
 
+  //================================================//
+
   deleteBook(id: number): Observable<LoginResponse> {
     let token = localStorage.getItem('angularToken');
-    console.log(token);
+    //console.log(token);
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -51,14 +68,19 @@ export class AddressServiceService {
     return this.http.delete<LoginResponse>(this.baseurl + `deleteBook/${id}`, { headers });
   }
 
+  //================================================//
+
+
   updateBook(id: number, addressBook: Address): Observable<ResponseAddress> {
     let token = localStorage.getItem('angularToken');
-    console.log(token);
+    //console.log(token);
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json',
     });
     return this.http.put<ResponseAddress>(this.baseurl + `updateBook/${id}`, addressBook, { headers });
   }
+
+  //================================================//
 
 }

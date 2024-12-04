@@ -31,7 +31,10 @@
                 <span>This is Required</span>
               }
               @if (addressForm.controls['phoneNumber'].errors?.['minlength']) {
-                <span>Min 10 numbers required</span>
+                <span>Min 10 digits required</span>
+              }
+              @if(addressForm.controls['phoneNumber'].errors?.['maxlength']){
+                <span>Number should not exceed 10 digits</span>
               }
             </div>
           }
@@ -92,6 +95,12 @@
               <div class="text-danger">
                 @if(addressForm.controls['zipCode'].errors?.['required']){
                   <span>This is Required</span>
+                }
+                @if (addressForm.controls['zipCode'].errors?.['minlength']) {
+                  <span>Min 6 digits required</span>
+                }
+                @if(addressForm.controls['zipCode'].errors?.['maxlength']){
+                  <span>Number should not exceed 6 digits</span>
                 }
               </div>
             }

@@ -1,0 +1,122 @@
+<div class="form">
+    <div class="form-container">
+      <form [formGroup]="addressForm">
+        <h3 class="text">PERSON ADDRESS FORM</h3>
+        
+        <!--Name-->
+        <div class="form-group">
+          <label for="fullName">
+            FullName
+            <input type="text"  name="fullName" formControlName="fullName" class="form-control" />
+            @if(addressForm.controls['fullName'].touched){
+              <div class="text-danger">
+                @if(addressForm.controls['fullName'].errors?.['required']){
+                  <span>This is Required</span>
+                }
+              </div>
+            }
+          </label>
+        </div>
+  
+        <!--Phone Number-->
+        <div class="form-group">
+          <label for="phoneNumber">
+            Phone Number
+            <input type="tel" name="phoneNumber" formControlName="phoneNumber" class="form-control" />
+            @if(addressForm.controls['phoneNumber'].touched){
+              <div class="text-danger">
+                @if(addressForm.controls['phoneNumber'].errors?.['required']){
+                  <span>This is Required</span>
+                }
+                @if (addressForm.controls['phoneNumber'].errors?.['minlength']) {
+                  <span>Min 10 digits required</span>
+                }
+                @if(addressForm.controls['phoneNumber'].errors?.['maxlength']){
+                  <span>Number should not exceed 10 digits</span>
+                }
+              </div>
+            }
+          </label>
+        </div>
+  
+        <!--Address-->
+        <div class="form-group">
+          <label for="address">
+            Address
+            <input type="text" name="address" formControlName="address" class="form-control" />
+            @if(addressForm.controls['address'].touched){
+              <div class="text-danger">
+                @if(addressForm.controls['address'].errors?.['required']){
+                  <span>This is Required</span>
+                }
+              </div>
+            }
+          </label>
+        </div>
+  
+        <!-- City,state and zip code-->
+        <div class="container">
+          <div class="form-group">
+            <label for="city">
+              City
+              <input type="text" name="city" formControlName="city" class="form-control" />
+              @if(addressForm.controls['city'].touched){
+                <div class="text-danger">
+                  @if(addressForm.controls['city'].errors?.['required']){
+                    <span>This is Required</span>
+                  }
+                </div>
+              }
+            </label>
+          </div>
+  
+  
+          <div class="form-group">
+            <label for="state">
+              State
+              <input type="text" name="state" formControlName="state" class="form-control" />
+              @if(addressForm.controls['state'].touched){
+                <div class="text-danger">
+                  @if(addressForm.controls['state'].errors?.['required']){
+                    <span>This is Required</span>
+                  }
+                </div>
+              }
+            </label>
+          </div>
+  
+          <div class="form-group">
+            <label for="zipCode">
+              Zip-Code
+              <input type="tel" name="zipCode" formControlName="zipCode" class="form-control" />
+              @if(addressForm.controls['zipCode'].touched){
+                <div class="text-danger">
+                  @if(addressForm.controls['zipCode'].errors?.['required']){
+                    <span>This is Required</span>
+                  }
+                  @if (addressForm.controls['zipCode'].errors?.['minlength']) {
+                    <span>Min 6 digits required</span>
+                  }
+                  @if(addressForm.controls['zipCode'].errors?.['maxlength']){
+                    <span>Number should not exceed 6 digits</span>
+                  }
+                </div>
+              }
+            </label>
+          </div>
+        </div>
+  
+        <!--Buttons-->
+        <div class="button-container">
+          <button [disabled]="addressForm.invalid" class="btn btn-primary" type="submit" (click)="onUpdate()">
+            Update
+          </button>
+          <button class="btn btn-primary" (click)="onReset()">Reset</button>
+  
+          <a routerLink="/homepage">
+            <button class="btn btn-danger">Cancel</button>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>

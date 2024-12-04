@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { loginGuard } from './guard/login.guard';
 import { RegisterComponent } from './register/register.component';
+import { EditFormComponent } from './edit-form/edit-form.component';
 
 
 
@@ -38,8 +39,8 @@ export const routes: Routes = [
                 canActivate:[loginGuard]
             },
             {
-                path:'add-form/:fullName',
-                component:AddFormComponent,
+                path:'edit-form/:id',
+                component:EditFormComponent,
                 canActivate:[loginGuard]
             }
         ]

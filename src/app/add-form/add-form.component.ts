@@ -15,7 +15,7 @@ import { map } from 'rxjs';
 })
 export class AddFormComponent {
 
-  activeRoute=inject(ActivatedRoute);
+  activeRoute = inject(ActivatedRoute);
 
 
   private addressService: AddressServiceService = inject(AddressServiceService);
@@ -31,19 +31,19 @@ export class AddFormComponent {
 
   addressForm: FormGroup = new FormGroup({
     fullName: new FormControl('', [Validators.required]),
-    phoneNumber: new FormControl('', [Validators.required,Validators.minLength(10)]),
+    phoneNumber: new FormControl('', [Validators.required, Validators.minLength(10),Validators.maxLength(10)]),
     address: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
     state: new FormControl('', [Validators.required]),
-    zipCode: new FormControl('', [Validators.required])
+    zipCode: new FormControl('', [Validators.required,Validators.minLength(6),Validators.maxLength(6)])
   })
 
-  private router :Router=inject(Router);
+  private router: Router = inject(Router);
 
   addForm() {
-    const addressBook=this.addressForm.value;
-    this.addressService.addBook(addressBook).subscribe((res:ResponseAddress)=>{
-      if(res.fullName!=null){
+    const addressBook = this.addressForm.value;
+    this.addressService.addBook(addressBook).subscribe((res: ResponseAddress) => {
+      if (res.fullName != null) {
         alert('Book Added Successfully');
         console.log(res)
         this.router.navigateByUrl('/homepage')
@@ -51,29 +51,7 @@ export class AddFormComponent {
     })
   }
 
- onReset() {
-  this.addressForm.reset();
+  onReset() {
+    this.addressForm.reset();
   }
-
-  // fullName$ = this.activeRoute.paramMap.pipe(
-  //   map(params=>
-  //     params.get('book.fullName'))
-  // );
-
-  //editBook!:Address;
-
-  editBook(book:Address){
-    this.addressForm.patchValue({
-      
-    });
-  }
-
-  getAddressBook(fullName:string){
-    
-    this.addressService.getBook(fullName).subscribe((res:Address)=>{
-      this.editBook(res),
-      (err:any)=>console.log(err);
-    })
-  }
-
 }

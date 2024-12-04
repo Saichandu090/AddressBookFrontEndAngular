@@ -16,7 +16,7 @@ export class AddressServiceService {
 
   //headers: HttpHeaders = inject(HttpHeaders);
 
-  getBook(name:string):Observable<ResponseAddress>{
+  getBook(id:number):Observable<ResponseAddress>{
     let token = localStorage.getItem('angularToken');
     //console.log(token);
     const headers = new HttpHeaders({
@@ -24,7 +24,7 @@ export class AddressServiceService {
       'Content-Type': 'application/json',
     });
     //console.log(headers)
-    return this.http.get<ResponseAddress>(this.baseurl + `byfullName/${name}`, { headers });
+    return this.http.get<ResponseAddress>(this.baseurl + `byId/${id}`, { headers });
   }
 
   //================================================//
@@ -71,14 +71,14 @@ export class AddressServiceService {
   //================================================//
 
 
-  updateBook(id: number, addressBook: Address): Observable<ResponseAddress> {
+  updateBook(id:number, addressBook: Address): Observable<LoginResponse> {
     let token = localStorage.getItem('angularToken');
     //console.log(token);
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json',
     });
-    return this.http.put<ResponseAddress>(this.baseurl + `updateBook/${id}`, addressBook, { headers });
+    return this.http.put<LoginResponse>(this.baseurl + `updateBook/${id}`, addressBook, { headers });
   }
 
   //================================================//
